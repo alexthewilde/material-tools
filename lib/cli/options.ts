@@ -34,7 +34,7 @@ export function registerOptions(yargs: any): any {
   }))
   .option('version', addDefaults({
     alias: 'v',
-    describe: 'Angular Material version.',
+    describe: 'AngularJS Material version.',
     default: DEFAULT_OPTIONS.version
   }));
 
@@ -53,7 +53,18 @@ export function registerOptions(yargs: any): any {
     describe: 'Directory to be used as a cache for downloaded versions.',
     default: DEFAULT_OPTIONS.cache,
     group: OPTIONAL_GROUP
-  }));
+  }))
+  .option('exclude-modules', addDefaults({
+    alias: 'em',
+    describe: 'List of modules to be excluded from the build.',
+    type: 'array',
+    group: OPTIONAL_GROUP
+  }))
+  .option('exclude-main-module', {
+    describe: 'Exclude code for main AngularJS Material module with list of dependencies.',
+    boolean: true,
+    group: OPTIONAL_GROUP
+  });
 
   // Logging arguments
   yargs.option('verbose', {
